@@ -6,7 +6,7 @@ import SpendingLimit from '../modules/spending-limit';
 import {React} from '@shared-import';
 
 import {createStackNavigator} from '@react-navigation/stack';
-import {dashboard, SCREENS, spendingLimit} from './labels';
+import {SCREENS} from './labels';
 import TabNavigator from './app-tab';
 
 const Stack = createStackNavigator();

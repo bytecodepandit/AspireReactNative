@@ -1,49 +1,51 @@
-import React, {useState} from 'react';
-import {View, TouchableOpacity, Text} from 'react-native';
-import DraggableFlatList from 'react-native-draggable-flatlist';
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * Generated with the TypeScript template
+ * https://github.com/react-native-community/react-native-template-typescript
+ *
+ * @format
+ */
 
-const exampleData = [...Array(20)].map((d, index) => ({
-  key: `item-${index}`, // For example only -- don't use index as your key!
-  label: index,
-  backgroundColor: `rgb(${Math.floor(Math.random() * 255)}, ${
-    index * 5
-  }, ${132})`,
-}));
+ import {
+  NavigationContainer,
+  Provider,
+  React,
+  SafeAreaProvider,
+} from '@shared-import';
+import {StatusBar} from 'react-native';
+import {ThemeProvider} from '@shopify/restyle';
+import {LoaderAtom} from './shared/atoms';
+import {navigationRef} from './core/services/navigation/navigation.service';
+import store from './store';
+import MyStack from './routes';
+import theme from './theme';
+import Toast from 'react-native-toast-message';
+import SplashScreen from 'react-native-splash-screen'
 
-const FuncExample = () => {
-  const [data, setData] = useState<any>(exampleData);
-  const renderItem = ({item, index, drag, isActive}: any) => {
-    return (
-      <TouchableOpacity
-        style={{
-          height: 100,
-          backgroundColor: isActive ? 'blue' : item.backgroundColor,
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-        onLongPress={drag}>
-        <Text
-          style={{
-            fontWeight: 'bold',
-            color: 'white',
-            fontSize: 32,
-          }}>
-          {item.label}
-        </Text>
-      </TouchableOpacity>
-    );
-  };
 
+const App = () => {
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      SplashScreen.hide();
+    }, 1000)
+  }, [])
   return (
-    <View style={{flex: 1}}>
-      <DraggableFlatList
-        data={data}
-        renderItem={renderItem}
-        keyExtractor={(item: any, index: any) => `draggable-item-${item.key}`}
-        onDragEnd={({d}: any) => setData({d})}
-      />
-    </View>
+    <Provider store={store}>
+      <StatusBar translucent barStyle="light-content" />
+      <ThemeProvider theme={theme}>
+        <SafeAreaProvider>
+          <LoaderAtom />
+          <Toast />
+          <NavigationContainer ref={navigationRef}>
+            <MyStack />
+          </NavigationContainer>
+        </SafeAreaProvider>
+      </ThemeProvider>
+    </Provider>
   );
 };
 
-export default FuncExample;
+export default App;
