@@ -1,0 +1,13 @@
+{
+  "cardType": "VISA",
+  "cardNumber": "1234123412341234",
+  "validThru": "10/23",
+  "cvv": "123",
+  "usage": {
+    "usageLimit": 5000,
+    "spendings": 2000,
+    "availableBalance": 4000
+  },
+  "deactivated": false,
+  "freezeCard": false
+}

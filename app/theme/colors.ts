@@ -1,0 +1,16 @@
+export default {
+  primary: '#0C365A',
+  secondary: '#01D167',
+  iconColor: '#ddd',
+  progressBar: '#cfffdb',
+  disable: '#ddd',
+  white: "#fff",
+  fadeGreen: '#effcf4',
+  textPrimary: '#25345F',
+  textSecondary: '#c0c0c0',
+  textTertiary: '#01D167',
+  textDisable: '#ddd',
+  danger: '#DC1717',
+  success: '#04AA6D',
+  black: '#000000',
+};
